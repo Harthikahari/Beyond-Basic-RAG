@@ -437,21 +437,6 @@ git commit -m "feat: Add Hybrid Search and Reranking logic"
 
 ---
 
-## Benchmarking Results
-
-We tested this architecture against a baseline (naive vector-only RAG) on 1,000 enterprise support queries:
-
-| Metric | Naive RAG | Hybrid + Reranking | Improvement |
-|--------|-----------|-------------------|-------------|
-| **Exact Match Recall** | 67% | 94% | +40% |
-| **Answer Accuracy** | 76% | 89% | +17% |
-| **P@5 (Precision at 5)** | 0.72 | 0.91 | +26% |
-| **Avg. Latency** | 340ms | 680ms | +100% |
-
-**Key Takeaway:** You're trading **2x latency** for **~20% accuracy gain**. For high-stakes applications (legal research, medical diagnosis, customer support), this is a worthwhile tradeoff.
-
----
-
 ## Conclusion: When to Use This Architecture
 
 **Use Hybrid Search + Reranking When:**
@@ -465,14 +450,6 @@ We tested this architecture against a baseline (naive vector-only RAG) on 1,000 
 - ❌ All queries are conversational/conceptual (no keyword precision needed)
 - ❌ You require <200ms end-to-end latency
 - ❌ Infrastructure cost is primary constraint (reranking adds compute)
-
----
-
-## Next in This Series
-
-**Part 2: Query Understanding & Routing** — Building a classifier to route complex queries to specialized retrievers (SQL for structured data, vector for unstructured, web search for current events).
-
-**Part 3: Evaluation Frameworks** — How to build regression tests for RAG systems using LLM-as-a-judge and synthetic datasets.
 
 ---
 
